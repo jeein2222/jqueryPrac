@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#btn").dblclick(function () { //더블클릭 이벤트
+                $("p").hide();
+            });
+            $("p").mouseenter(function () { //마우스가 요소에 진입
+                $(this).css("background-color","gold")
+            });
+            $("p").mouseleave(function () { //마우스가 요소에서 벗어남
+                $(this).css("background-color", "white")
+            });
+            $("p").mouseup(function () { //마우스를 클릭했다가 땔 때
+                $(this).css("background-color", "blue")
+            });
+            $("p").mousedown(function () { //마우스를 클릭했을 때
+                $(this).css("background-color", "red")
+            });
+            $("p").mousehover(function () { //마우스가 컨트롤 위에 있을때
+                $(this).css("background-color", "green")
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>첫번째 문단</p>
+    <p>두번째 문단</p>
+
+    <button id="btn">클릭</button>
+</body>
+</html>

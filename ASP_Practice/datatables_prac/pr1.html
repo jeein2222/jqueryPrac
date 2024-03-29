@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/dataTables.bootstrap5.css" rel="stylesheet" />
+    <link href="../datatables/datatables.css" rel="stylesheet" />
+    <link href="../datatables/datatables.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../datatables/datatables.js"></script>
+    <script src="../datatables/datatables.min.js"></script>
+
+    <style>
+        body {
+            margin: 20px 20px 20px 20px;
+        }
+    </style>
+
+    <script>
+
+        function eventFired(type) {
+            let n = document.querySelector("#demo_info");
+            n.innerHTML +='<div>' + type + ' event - ' + new Date().getHours()+':'+new Date().getMinutes() + '</div>';
+            n.scrollTop = n.scrollHeight;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let table = new DataTable('#example', {
+                info: false,
+                order: [[0, 'desc']], //default ordering
+                columnDefs: [
+                    {
+                        //target: 1,
+                        //visible: false,
+                        //searchable: false
+                        targets: 0,
+                        render: (data, type, row) => data + ' (' + row[2] + ') ' //나이와 이름 결합하기
+                    },
+                    {
+                        target: 2, 
+                        visible : false //이름은 숨기기
+                    }
+                ],
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, 'All']
+                ]
+
+            });
+
+            table.on('click', 'tbody tr', function () {
+                    let data = table.row(this).data();
+                    document.getElementById('name').value = data[0];
+                    document.getElementById('position').value = data[1];
+                    document.getElementById('age').value = data[2];
+                    document.getElementById('country').value = data[3];
+                })
+                .on('order.dt', () => eventFired('Order'))
+                .on('search.dt', () => eventFired('Search'))
+                .on('page.dt', () => eventFired('Page'));
+        });
+
+        
+
+    </script>
+
+</head>
+<body>
+    <div class="table">
+        <table id="example" class="display" style="width: 1000px">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>20</td>
+                    <td>Korea</td>
+                </tr>
+                <tr>
+                    <td>Lisa</td>
+                    <td>System Architect</td>
+                    <td>40</td>
+                    <td>US</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="demo_info" class="box"></div>
+
+    <div class="choice" style="margin: 20px;">
+        <h3>What you choose...</h3>
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                Name : <input type="text" id="name" /> <br />
+            </div>
+            <div class="col-md-3">
+                Position : <input type="text" id="position" /> <br />
+            </div>
+            <div class="col-md-3">
+                Age : <input type="text" id="age" /> <br />
+            </div>
+            <div class="col-md-3">
+                Country : <input type="text" id="country" /> <br />
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

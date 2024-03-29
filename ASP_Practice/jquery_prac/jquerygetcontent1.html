@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#btn_get').on('click', function () {
+                var disText=$('#dis').text();
+                var inputVal = $('#name').val();
+/*                alert(disText);*/
+/*                alert(inputVal);*/
+                var href = $('#naver').attr('href'); //속성 가져오기
+                console.log(href);
+            }); 
+        });
+    </script>
+</head>
+<body>
+    <button id="btn_get">button</button>
+    <p id="dis">hello <span style="font-weight: bold;">world</span>!</p>
+    <input type="text" id="name" value="hi" />
+    <a href="https://naver.com" id="naver">naver</a>
+</body>
+</html>

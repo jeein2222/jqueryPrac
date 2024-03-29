@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .outer {
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            //deprecated...
+            //$('.outer').click(function () {
+            //    $(this).css("background-color", "red");
+            //});
+
+            //recommended...
+            $('.outer').on('click', function () {
+                $(this).css("background-color", "red");
+            });
+
+            //deprecated...
+            //$('[type="text"]').focus(function () {
+            //    $(this).css("background-color", "brown");
+            //});
+
+            //deprecated...
+            //$('[type="text"]').blur(function () {
+            //    $(this).css("background-color", "blue");
+            //});
+
+            //recommended...
+
+            $('[type="text"]').on('focus', function () {
+                $(this).css("background-color", "brown");
+            });
+
+            $('[type="text"]').on('blur', function () {
+                $(this).css("background-color", "blue");
+            });
+
+            $('[type="text"]').on({
+                focus: function () {
+                    $(this).css("background-color", "brown");
+                },
+                blur: function () {
+                    $(this).css("background-color", "blue");
+                },
+            })
+
+            //deprecated...
+            //$('.outer').hover(function () {
+            //    $(this).css('background-color', "blue");
+            //});
+
+            //recommended...
+            $('.outer').on("mouseenter", function () {
+                $(this).css('background-color', "blue");
+            });
+
+            $('.outer').on("mouseleave", function () {
+                $(this).css('background-color', "pink");
+            });
+
+        });
+
+
+
+    </script>
+</head>
+<body>
+    <div class="outer">
+        outer
+    </div>
+
+    <form action="" name="formal">
+        <input type="text" name="aaaa" />
+        <input type="text" name="bbbb" />
+    </form>
+</body>
+</html>

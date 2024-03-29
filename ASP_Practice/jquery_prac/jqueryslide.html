@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        div.div_menu {
+            width: 300px;
+            display: none;
+            background-color: greenyellow;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("button.btn_menu").on('click', function () {
+/*                $("div.div_menu").slideDown("slow");*/
+/*                $("div.div_menu").show("slow");*/
+/*                $("div.div_menu").slideUp("slow");*/
+                $("div.div_menu").slideToggle(200); //열리고 닫히기
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="btn_menu">메뉴</button>
+    <div class="div_menu">
+        a<br />
+        b<br />
+        c<br />
+    </div>
+</body>
+</html>

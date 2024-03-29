@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#btn').on('click', function () {
+/*                $('.div1').remove(); //자기 자신까지 제거*/
+                $('.div1').empty(); //자기 자신은 제외하고 제거
+            });
+        });
+    </script>
+    <style>
+        .div1 {
+            border: 1px solid red;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">클릭</button>
+    <div class="div1">
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+    </div>
+</body>
+</html>
